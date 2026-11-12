@@ -42,6 +42,11 @@ A short session (built with MSVC on Windows): insert two lines, replace a word, 
 
 No network access, no keys or credentials.
 
+## Authors
+
+- [Hani Ashrafi](https://github.com/H1ashrafi)
+- [Hasan Hüseyin Yüksel](https://github.com/Hasan-Huseyin-Yuksel)
+
 ## License
 
 Free for personal, educational and research use. **Commercial use (selling, publishing the app in a store, or using it in a paid product) is not allowed without written permission.** See `LICENSE` (PolyForm Noncommercial 1.0.0).
