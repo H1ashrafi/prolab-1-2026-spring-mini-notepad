@@ -454,8 +454,8 @@ void enter_line() {
    ARAMA (SEARCH) - VE - METIN TUMUYLE DEGISTIRME (REPLACE ALL) 
    ============================================================= */
 
-/* Cok basit arama: Metinde kac eslesme gecti , konsol uzerien "stdout" a dogru printf edebilir / dondurebilir.*/
-/* Gercek UI kullanilamaz diye liste falan yerine kisa print / pointer vs donusleri !.*/
+/* Arama: her eslesmenin satir ve sutununu yazar, sonunda toplam sayiyi yazar.
+   Sutun 0'dan baslar, "g satir sutun" komutuyla ayni sekilde. */
 void search_text(const char *term) {
     if (term == NULL || strlen(term) == 0) return;
     
@@ -470,6 +470,7 @@ void search_text(const char *term) {
         
         while (ptr_found != NULL) {
              count++; /* Kac kere dondurdugunu say, veya bul . */
+             printf("line %d, column %d\n", current_lno, (int) (ptr_found - cur->text));
             
              /* Devami icin tekrar ariyoriuz ... */
              ptr_found = strstr(ptr_found + term_len, term);
@@ -478,6 +479,8 @@ void search_text(const char *term) {
         cur = cur->next;
         current_lno++;
     }
+    
+    printf("%d match(es)\n", count);
 }
 
 /* KELIMELERI DOSYA UZERINDE KOPLE (ALL METINS) DEGISTIRME 
@@ -556,6 +559,11 @@ int replace_all_text(const char *old_word, const char *new_word) {
     }
     
     if (replaced_count > 0) is_dirty = 1;
+    
+    /* Satir kisaldiysa imlec satir sonundan one tasmasin. */
+    if (cur_line_ptr != NULL && cur_col > cur_line_ptr->len) {
+        cur_col = cur_line_ptr->len;
+    }
     return replaced_count;
 }
 

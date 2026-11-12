@@ -34,7 +34,7 @@ p
 
 ## Screenshot
 
-A short session (built with MSVC on Windows): insert two lines, replace a word, two backspaces, one undo.
+A short session (built with MSVC on Windows): insert two lines, replace a word, search (prints line and column of every match), two backspaces, one undo.
 
 ![Run](docs/images/run.png)
 
